@@ -1,19 +1,54 @@
 //Student Information
-let studentName = "Grace";
-let testScore = 18;
-let assignmentScore = 17;
-let examScore = 62;
 
-//Final Score
+let students = [
+{
+name:"Grace",
+testScore: 18,
+assignmentScore: 17,
+examScore: 60
+},
+
+{
+name:"Glory",
+testScore: 10,
+assignmentScore: 15,
+examScore: 43
+},
+
+{
+name:"Goodness",
+testScore: 13,
+assignmentScore: 20,
+examScore: 25
+},
+
+{
+name:"Goodluck",
+testScore: 8,
+assignmentScore:10,
+examScore: 2
+},
+
+{
+name:"Gift",
+testScore: 5,
+assignmentScore: 10,
+examScore: 25
+}
+
+];
+
+function calculateResult(name, testScore, assignmentScore, examScore) {
+
+    //Final Score
+
 let finalScore = testScore + assignmentScore + examScore;
 
-//Variable for the result
-let grade;
-let status;
-let feedback;
 
 // Calculate Grade
-function calculateGrade(){
+
+
+    let grade;
 
     if (finalScore >= 70) {
         grade ="A";}
@@ -34,13 +69,20 @@ function calculateGrade(){
         grade ="F";}
 
         //Determine Pass or Fail
+        let status;
+
         if (finalScore >= 40) {
-            status = "passed";}
+            status = "Passed";}
 
             else{
                 status = "Failed";}
 
+
+
                 //Feedback
+                
+               let feedback;
+
                 if (finalScore >= 80) {
                     feedback = "Execellent Work."; }
 
@@ -53,13 +95,57 @@ function calculateGrade(){
                     else {
                         feedback = "poor, you need to work harder.";}
 
-}
 
-//Run the function
-calculateGrade();
 
-console.log("Student:" + studentName);
-console.log("Score:" + finalScore);
-console.log("Grade:" + grade);
-console.log("Status" + status);
-console.log("Feedback:" + feedback);
+let row = document.createElement("tr");
+
+row.innerHTML =
+`<td>${name}</td>
+<td>${finalScore}</td>
+<td>${grade}</td>
+<td>${status}</td>
+<td>${feedback}</td>`;
+
+studentTable.appendChild(row);
+
+return finalScore; }
+
+let studentTable = document.getElementById("studentTable");
+
+
+
+
+let totalScore = 0;
+let highestScore = 0;
+let lowestScore = 100;
+let passedStudents = 0;
+let scores=[];
+
+
+
+students.forEach(function(student){
+    let score = calculateResult(
+        student.name,
+        student.testScore,
+        student.assignmentScore,
+        student.examScore);
+
+        totalScore = totalScore + score;
+
+        if (score > highestScore){highestScore = score;}
+
+        if (score < lowestScore) {lowestScore = score;}
+        scores.push(score);
+
+        if (score >= 40){
+    passedStudents++;}
+
+});
+let classAverage = totalScore/students.length;
+
+//Display class statisticss
+
+console.log("Class Average:" + classAverage.toFixed(2));
+console.log("Highest Score:" + highestScore);
+console.log("Lowest Score:" + lowestScore);
+console.log("Students passed" + passedStudents);
