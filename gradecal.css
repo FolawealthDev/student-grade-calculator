@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color:rgb(16, 16, 112);
+    padding: 40px 20px;
+}
+
+.container{
+    max-width: 900px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color:rgb(16, 16, 112);
+    
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+th,td{
+    padding: 15px;
+    text-align: center;
+    border:3px solid white
+}
+
+th{
+    background-color:rgb(16, 16, 112);
+    color: white;
+}
+
+tr:nth-child(even){
+    background-color:rgb(27, 27, 161);
+    
+}
+
+tr:hover{
+    background-color: gray;
+}
